@@ -4,12 +4,16 @@ server of wechatdemo
 项目整体架构
 
 api--
+
      bin--
           wechat_sever_start.py
+		
      config--
           settings.py
+		
      data--
           sql.py
+		
      lib--
           interface.py
           tool.py
