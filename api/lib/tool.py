@@ -30,6 +30,3 @@ def mysql_exe(sql):
         print("数据库执行失败", e)
     finally:
         db.close()
-
-# for data in myql_exe(sql):
-#     print(data[])

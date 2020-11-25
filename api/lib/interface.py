@@ -4,8 +4,13 @@
 """
 接口调用逻辑处理
 """
+import time
+
 import flask
 import json
+
+from flask import render_template
+
 from data.sql import qsql
 from lib.tool import mysql_exe
 
@@ -19,15 +24,29 @@ def getBorrowGoods():
     data_l = []
     for results in data:
         data_l.append({
-            "借用人": results[0],
-            "借用日期": results[1],
-            "借用物资": results[2],
-            "归还日期": results[3]
+            "borrowname": results[0],
+            "borrowdate": results[1],
+            "borrowgoods": results[2],
+            "revertDate": results[3]
         })
     responed = {
-                "msg": "接口调用成功",
-                "msg_code": "0",
-                "data": data_l
-                }
+        "msg": "接口调用成功",
+        "msg_code": "0",
+        "data": data_l
+    }
 
     return json.dumps(responed, ensure_ascii=False)
+
+
+@server.route("/api/postBorrowGoods", methods=["post"])
+def postBorrowGoods():
+    borrowname = flask.request.values.get("borrowname")
+    # borrowdate = flask.request.values.get("borrowdate")
+    borrowdate = time.strftime("%Y/%m/%d", time.localtime())
+    borrowgoods = flask.request.values.get("borrowgoods")
+    # revertDate = flask.request.values.get("revertDate")
+    isql = "insert into borrowTable (borrowname, borrowdate, borrowgoods, revertDate) VALUES ('{}','{}','{}','')".format(
+        borrowname, borrowdate, borrowgoods)
+    
+    mysql_exe(isql)
+    return "请求成功"
