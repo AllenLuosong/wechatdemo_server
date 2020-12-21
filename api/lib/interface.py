@@ -8,10 +8,7 @@ import time
 
 import flask
 import json
-
-from flask import render_template
-
-from data.sql import qsql
+from data.sql import qsql, csql
 from lib.tool import mysql_exe
 
 server = flask.Flask(__name__)
@@ -47,6 +44,20 @@ def postBorrowGoods():
     # revertDate = flask.request.values.get("revertDate")
     isql = "insert into borrowTable (borrowname, borrowdate, borrowgoods, revertDate) VALUES ('{}','{}','{}','')".format(
         borrowname, borrowdate, borrowgoods)
-    
     mysql_exe(isql)
+    # print(isql)
     return "请求成功"
+
+
+@server.route("/api/updateBorrowGoods", methods=["post"])
+def updateBorrowGoods():
+    id = flask.request.values.get("id")
+    now_date = time.strftime("%Y/%m/%d", time.localtime())
+    count = mysql_exe(csql)[0][0]
+    # print("count", count)
+    # print("id", id)
+    id_ = (int(count) - int(id))
+    upsql = "update borrowTable set revertDate='{}' where id ={}".format(now_date, id_)
+    print("upsql", upsql)
+    mysql_exe(upsql)
+    return "更新成功"

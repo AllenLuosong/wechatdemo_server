@@ -6,14 +6,15 @@
 """
 
 MYSQL_INFO = {
-    # 测试管理平台数据库信息
+    # 腾讯云数据库
     "host": "10.2.47.216",
     "port": 3306,
     "user": "root",
-    "passwd": "greetest",
+    "passwd": "m",
     "charset": "utf8",
     "database": "test"
 }
-SERVER_PORT = 5000  # 服务器端口
-HOST = "127.0.0.1"  # 服务器地址
+SERVER_PORT = 443  # 服务器端口
+# HOST = "172.28.21.53"  # 本地调试服务器地址
+HOST = "10.0.4.8"  # 腾讯云服务器地址 内网  www.lerning.xyz/api/getBorrowGoods
 
