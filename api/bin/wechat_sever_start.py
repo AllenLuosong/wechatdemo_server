@@ -11,4 +11,5 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
 from lib.interface import server
 from config.settings import SERVER_PORT, HOST
 
-server.run(host=HOST, port=SERVER_PORT, debug=True)
+# server.run(host=HOST, port=SERVER_PORT, debug=True)
+server.run(host=HOST, port=SERVER_PORT, debug=True, ssl_context=('../ssl_context/Apache/2_lerning.xyz.crt', '../ssl_context/Apache/3_lerning.xyz.key'))
