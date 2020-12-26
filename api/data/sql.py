@@ -1,12 +1,12 @@
 # sql语句配置文件
 
 #  查询借用表数据
-qsql = "select borrowname, borrowdate, borrowgoods, revertDate from borrowTable order by id desc;"
+qsql = "select borrowname, borrowdate, borrowgoods, revertDate from BorrowTable order by id desc;"
 
-# isql = " insert into borrowTable (borrowname, borrowdate, borrowgoods, revertDate) VALUES ({},{},{},{})".format(borrowName, param1,
+# isql = " insert into BorrowTable (borrowname, borrowdate, borrowgoods, revertDate) VALUES ({},{},{},{})".format(borrowName, param1,
 #                                                                                                                 param1, param1)
 
-csql = "select count(id) from borrowTable;"
+csql = "select count(id) from BorrowTable;"
 
 
 
