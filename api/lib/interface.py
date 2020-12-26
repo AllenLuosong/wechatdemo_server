@@ -42,7 +42,7 @@ def postBorrowGoods():
     borrowdate = time.strftime("%Y/%m/%d", time.localtime())
     borrowgoods = flask.request.values.get("borrowgoods")
     # revertDate = flask.request.values.get("revertDate")
-    isql = "insert into borrowTable (borrowname, borrowdate, borrowgoods, revertDate) VALUES ('{}','{}','{}','')".format(
+    isql = "insert into BorrowTable (borrowname, borrowdate, borrowgoods, revertDate) VALUES ('{}','{}','{}','')".format(
         borrowname, borrowdate, borrowgoods)
     mysql_exe(isql)
     # print(isql)
